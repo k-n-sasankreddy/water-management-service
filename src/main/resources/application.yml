@@ -1,0 +1,41 @@
+logging:
+  level:
+    root: ERROR
+    org:
+      springframework: INFO
+    com:
+      knsr:
+        ingestion: INFO
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: water-mgmt-service
+
+  # ✅ Hibernate settings are configured under spring.jpa for JPA integration and entity management
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        default_schema: water_mgmt
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+# ✅ Custom DB properties used by your DbProperties class and custom DataSource bean
+db:
+  url: jdbc:postgresql://localhost:5432/watermgmt
+  username: postgres
+  password: password
+  driver-class-name: org.postgresql.Driver
+  # HikariCP connection pool settings
+  max-pool-size: 10            # maps to HikariConfig.setMaximumPoolSize
+  min-pool-size: 2              # maps to HikariConfig.setMinimumIdle
+  connection-timeout: 30000      # maps to HikariConfig.setConnectionTimeout
+  max-wait-time: 30000           # optional, can be mapped to validationTimeout or ignored
+#  idle-timeout: 600000           # optional, maps to HikariConfig.setIdleTimeout
+#  max-lifetime: 1800000          # optional, maps to HikariConfig.setMaxLifetime
+
