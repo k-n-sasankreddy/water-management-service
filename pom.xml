@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.dsce.wmgmt</groupId>
-	<artifactId>water-mgmt-service</artifactId>
+	<artifactId>water-management-service</artifactId>
 	<version>1.0.0</version>
-	<name>water-mgmt-service</name>
+	<name>water-management-service</name>
 	<description> Spring Boot for Water Management service system</description>
 	<properties>
 		<hikaricp.version>6.3.0</hikaricp.version>
