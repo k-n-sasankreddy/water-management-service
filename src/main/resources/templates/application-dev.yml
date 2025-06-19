@@ -36,15 +36,14 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        default_schema: water_mgmt
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
 # ✅ Custom DB properties used by your DbProperties class and custom DataSource bean
 db:
-  url: jdbc:postgresql://localhost:5432/wmgmt
+  url: jdbc:postgresql://localhost:5432/water_management_db
   username: postgres
-  password: admin
+  password: pgdb1234
   driver-class-name: org.postgresql.Driver
   # HikariCP connection pool settings
   max-pool-size: 10              # maps to HikariConfig.setMaximumPoolSize
