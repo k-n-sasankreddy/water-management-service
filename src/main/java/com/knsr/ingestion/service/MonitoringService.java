@@ -1,6 +1,7 @@
 package com.knsr.ingestion.service;
 
 import com.knsr.ingestion.dto.response.AlertResponseDTO;
+import com.knsr.ingestion.dto.response.UsageResponseByLocationDTO;
 import com.knsr.ingestion.dto.response.UsageResponseDTO;
 import com.knsr.ingestion.entity.Alert;
 import com.knsr.ingestion.entity.UsageData;
@@ -109,5 +110,10 @@ public class MonitoringService {
         dto.setCreatedAt(alert.getCreatedAt());
         return dto;
     }
+
+    public List<UsageResponseByLocationDTO> getUsageByLocation() {
+        return usageRepo.findUsageGroupedByLocation();
+    }
+
 }
 

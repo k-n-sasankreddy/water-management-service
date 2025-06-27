@@ -8,26 +8,27 @@ logging:
         ingestion: INFO
 
 server:
-  port: 8080
+  port: 8070
 
 spring:
   application:
     name: data-ingestion
 
-  # ✅ Enable below datasource and Hikari sections
-  # ✅ If you want to use Spring Boot's built-in spring.datasource and HikariCP auto-configuration (instead of a custom DataSource bean)HikariCP connection pool settings (Spring Boot uses HikariCP by default)
+
+# ✅ Enable below datasource and Hikari sections
+# ✅ If you want to use Spring Boot's built-in spring.datasource and HikariCP auto-configuration (instead of a custom DataSource bean)HikariCP connection pool settings (Spring Boot uses HikariCP by default)
 #  datasource:
-#    url: jdbc:postgresql://localhost:5432/water_management_db
-#    username: postgres
-#    password: pgdb1234
+#    url: jdbc:postgresql://${SPRING_DATASOURCE_URL:postgres-db:5432}/wmgmt
+#    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+#    password: ${SPRING_DATASOURCE_PASSWORD:postgres}
 #    driver-class-name: org.postgresql.Driver
-#   # ✅ HikariCP connection pool settings (Spring Boot uses HikariCP by default)
+#    # ✅ HikariCP connection pool settings (Spring Boot uses HikariCP by default)
 #    hikari:
-#      maximum-pool-size: 10
-#      minimum-idle: 5
-#      connection-timeout: 30000
-#      idle-timeout: 600000
-#      max-lifetime: 1800000
+#      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAX_POOL_SIZE:10}
+#      minimum-idle: ${SPRING_DATASOURCE_HIKARI_MIN_IDLE:5}
+#      connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:30000}
+#      idle-timeout: ${SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT:600000}
+#      max-lifetime: ${SPRING_DATASOURCE_HIKARI_MAX_LIFETIME:1800000}
 
   # ✅ Hibernate settings are configured under spring.jpa for JPA integration and entity management
   jpa:
@@ -42,15 +43,17 @@ spring:
 
 # ✅ Custom DB properties used by your DbProperties class and custom DataSource bean
 db:
-  url: jdbc:postgresql://localhost:5432/wmgmt
-  username: postgres
-  password: admin
+  url: jdbc:postgresql://${DB_URL:localhost:5432}/wmgmt
+  #url: jdbc:postgresql://${DB_URL:postgres:5432}/wmgmt
+  username: ${DB_USERNAME:postgres}
+  password: ${DB_PASSWORD:admin}
   driver-class-name: org.postgresql.Driver
   # HikariCP connection pool settings
-  max-pool-size: 10              # maps to HikariConfig.setMaximumPoolSize
-  min-pool-size: 5               # maps to HikariConfig.setMinimumIdle
-  connection-timeout: 30000      # maps to HikariConfig.setConnectionTimeout
-  max-wait-time: 30000           # optional, can be mapped to validationTimeout or ignored
-#  idle-timeout: 600000           # optional, maps to HikariConfig.setIdleTimeout
-#  max-lifetime: 1800000          # optional, maps to HikariConfig.setMaxLifetime
+  max-pool-size: ${DB_MAX_POOL_SIZE:10}                         # maps to HikariConfig.setMaximumPoolSize
+  min-pool-size: ${DB_MIN_POOL_SIZE:5}                          # maps to HikariConfig.setMinimumIdle
+  connection-timeout: ${DB_CONNECTION_TIMEOUT:30000}            # maps to HikariConfig.setConnectionTimeout
+  max-wait-time: ${DB_MAX_WAIT_TIME:30000}                      # optional, can be mapped to validationTimeout or ignored
+  idle-timeout: ${DB_IDLE_TIMEOUT:600000}                       # optional, maps to HikariConfig.setIdleTimeout
+  max-lifetime: ${DB_MAX_LIFETIME:1800000}                      # optional, maps to HikariConfig.setMaxLifetime
+
 

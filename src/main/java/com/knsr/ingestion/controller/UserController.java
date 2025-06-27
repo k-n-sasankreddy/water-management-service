@@ -1,10 +1,8 @@
 package com.knsr.ingestion.controller;
 
-import com.knsr.ingestion.dto.request.MeterStatusUpdateRequestDTO;
+
 import com.knsr.ingestion.dto.request.UserRequestDTO;
-import com.knsr.ingestion.dto.request.WaterUsageRequestDTO;
 import com.knsr.ingestion.service.UserService;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +20,8 @@ public class UserController {
         return ResponseEntity.ok("User and Water Meter added successfully.");
     }
 
-   /* @PutMapping("/updateMeterStatus")
+/*
+    @PutMapping("/updateMeterStatus")
     public ResponseEntity<String> updateMeterStatus(@RequestBody MeterStatusUpdateRequestDTO dto) {
         userService.updateMeterStatus(dto);
         return ResponseEntity.ok("Meter status updated successfully.");
@@ -36,7 +35,6 @@ public class UserController {
     public ResponseEntity<String> addWaterUsage(@RequestBody WaterUsageRequestDTO dto) {
         userService.addWaterUsage(dto);
         return ResponseEntity.ok("Water usage recorded successfully.");
-    }
-*/
+    }*/
 
 }

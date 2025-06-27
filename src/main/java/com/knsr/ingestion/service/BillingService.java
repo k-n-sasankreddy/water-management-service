@@ -31,7 +31,7 @@ public class BillingService {
     private static final double COST_PER_LITER = 5.0;
 
     // ✅ Scheduled Run Once Every Month (e.g., on the 1st at midnight)
-   // @Scheduled(cron = "0 0 0 1 * *")
+    //@Scheduled(cron = "0 0 0 1 * *")
     public BillingResponseDTO generateBill(BillingRequestDTO dto) {
         User user = userRepo.findById(dto.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User not found"));

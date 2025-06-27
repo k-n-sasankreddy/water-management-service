@@ -1,6 +1,7 @@
 package com.knsr.ingestion.controller;
 
 import com.knsr.ingestion.dto.response.AlertResponseDTO;
+import com.knsr.ingestion.dto.response.UsageResponseByLocationDTO;
 import com.knsr.ingestion.dto.response.UsageResponseDTO;
 import com.knsr.ingestion.service.MonitoringService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,12 @@ public class MonitoringController {
     @Autowired
     private MonitoringService monitoringService;
 
-   /* @GetMapping("/alerts/{userId}")
-    public ResponseEntity<List<AlertResponseDTO>> getAlertsByUser(@PathVariable Long userId) {
-        return ResponseEntity.ok(monitoringService.getAlertsByUserId(userId));
-    }*/
+
+    @GetMapping("/usage/location")
+    public ResponseEntity<List<UsageResponseByLocationDTO>> getUsageByLocation() {
+        return ResponseEntity.ok(monitoringService.getUsageByLocation());
+    }
+
 
     @GetMapping("/usage/{userId}")
     public ResponseEntity<List<UsageResponseDTO>> getUsageByUser(@PathVariable Long userId) {
