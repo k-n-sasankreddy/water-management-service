@@ -45,4 +45,68 @@ public class Billing {
     public void preUpdate() {
         this.updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public OffsetDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(OffsetDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public OffsetDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(OffsetDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public OffsetDateTime getPeriodEnd() {
+        return periodEnd;
+    }
+
+    public void setPeriodEnd(OffsetDateTime periodEnd) {
+        this.periodEnd = periodEnd;
+    }
+
+    public OffsetDateTime getPeriodStart() {
+        return periodStart;
+    }
+
+    public void setPeriodStart(OffsetDateTime periodStart) {
+        this.periodStart = periodStart;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

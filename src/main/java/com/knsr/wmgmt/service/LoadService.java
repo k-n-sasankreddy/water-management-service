@@ -141,4 +141,52 @@ public class LoadService {
         return true;
     }
 
+    public boolean simulateUsageAndAlertsForNewMeters() {
+        List<WaterMeter> allMeters = meterRepo.findAll();
+        OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
+        final double ALERT_THRESHOLD = 160.0;
+
+        boolean anySimulated = false;
+
+        for (WaterMeter meter : allMeters) {
+            boolean hasUsage = usageRepo.existsByMeterId(meter.getId());
+            if (hasUsage) continue;
+
+            double consumption = 10 + random.nextDouble() * 190;
+
+            Usage usage = new Usage();
+            usage.setMeter(meter);
+            usage.setTimestamp(now);
+            usage.setConsumptionLiters((float) consumption);
+            usage.setCreatedAt(now);
+            usage.setUpdatedAt(now);
+            usageRepo.save(usage);
+
+            if (consumption > ALERT_THRESHOLD) {
+                Alert alert = new Alert();
+                alert.setMeter(meter);
+                alert.setCreatedAt(now);
+                alert.setUpdatedAt(now);
+
+                if (consumption > 190) {
+                    alert.setType("HIGH_FLOW");
+                    alert.setMessage("High flow detected: " + consumption + " liters");
+                } else if (consumption > 175) {
+                    alert.setType("PRESSURE_DROP");
+                    alert.setMessage("Pressure drop suspected: " + consumption + " liters");
+                } else {
+                    alert.setType("LEAK");
+                    alert.setMessage("Leak suspected: " + consumption + " liters");
+                }
+
+                alertRepo.save(alert);
+            }
+
+            anySimulated = true;
+        }
+
+        return anySimulated;
+    }
+
+
 }

@@ -126,5 +126,15 @@ public interface ReportRepository extends JpaRepository<Usage, Long> {
         HAVING AVG(us.consumption_liters) > :threshold
         """, nativeQuery = true)
     List<HighUsageZoneResponseDTO> getHighUsageZones(@Param("threshold") double threshold);
+
+    @Query(value = """
+    SELECT u.role, DATE_TRUNC('month', us.timestamp) AS month, SUM(us.consumption_liters) AS total_consumption
+    FROM water_mgmt.usage us
+    JOIN water_mgmt.meter m ON us.meter_id = m.id
+    JOIN water_mgmt.user u ON m.user_id = u.id
+    GROUP BY u.role, DATE_TRUNC('month', us.timestamp)
+    ORDER BY month, u.role
+    """, nativeQuery = true)
+    List<Object[]> getRoleMonthlyConsumption();
 }
 

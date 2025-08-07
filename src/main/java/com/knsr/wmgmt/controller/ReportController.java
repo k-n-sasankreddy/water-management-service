@@ -26,10 +26,12 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getDashboardSummary());
     }
 
+/*
     @GetMapping("/monthly-usage/user")
     public ResponseEntity<List<MonthlyUsageResponseDTO>> getMonthlyUsagePerUser() {
         return ResponseEntity.ok(reportService.getMonthlyUsagePerUser());
     }
+*/
 
     @GetMapping("/monthly-usage/zone")
     public ResponseEntity<List<ZoneMonthlyUsageResponseDTO>> getMonthlyUsagePerZone() {
@@ -56,18 +58,25 @@ public class ReportController {
         return ResponseEntity.ok(reportService.getEfficiencyScores());
     }
 
-    @GetMapping("/alerts/realtime")
+  /*  @GetMapping("/alerts/realtime")
     public ResponseEntity<List<RealtimeAlertResponseDTO>> getRealtimeAlerts() {
         return ResponseEntity.ok(reportService.getRealtimeAlerts());
     }
-
-    @GetMapping("/consumption/user-type")
+*/
+  /*  @GetMapping("/consumption/user-type")
     public ResponseEntity<List<UserTypeConsumptionResponseDTO>> getConsumptionByUserType() {
         return ResponseEntity.ok(reportService.getConsumptionByUserType());
-    }
+    }*/
 
+/*
     @GetMapping("/zones/high-usage")
     public ResponseEntity<List<HighUsageZoneResponseDTO>> getHighUsageZones() {
         return ResponseEntity.ok(reportService.getHighUsageZones());
+    }
+*/
+
+    @GetMapping("/monthly-consumption/role")
+    public ResponseEntity<List<RoleMonthlyConsumptionResponseDTO>> getMonthlyConsumptionByRole() {
+        return ResponseEntity.ok(reportService.getMonthlyConsumptionByRole());
     }
 }

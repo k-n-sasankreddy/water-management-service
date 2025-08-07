@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT MAX(CAST(SUBSTRING(u.username, 5) AS int)) FROM User u WHERE u.username LIKE 'user%'")
     Optional<Integer> findMaxUserIndex();

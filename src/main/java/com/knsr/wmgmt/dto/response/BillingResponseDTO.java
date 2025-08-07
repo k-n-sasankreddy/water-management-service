@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 
 @Data
 public class BillingResponseDTO {
-    private Long billingId;
+    private Long Id;
     private Long userId;
     private OffsetDateTime periodStart;
     private OffsetDateTime periodEnd;
@@ -14,12 +14,12 @@ public class BillingResponseDTO {
     private String status;
     private OffsetDateTime createdAt;
 
-    public Long getBillingId() {
-        return billingId;
+    public Long getId() {
+        return Id;
     }
 
-    public void setBillingId(Long billingId) {
-        this.billingId = billingId;
+    public void setId(Long Id) {
+        this.Id = Id;
     }
 
     public OffsetDateTime getCreatedAt() {

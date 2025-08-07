@@ -104,10 +104,3 @@ CREATE TABLE IF NOT EXISTS water_mgmt.billing (
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     FOREIGN KEY (user_id) REFERENCES water_mgmt.user(id)
 );
-
-
---DROP TABLE if exists water_mgmt.usage;
---DROP TABLE if exists water_mgmt.alert;
---DROP Table if exists water_mgmt.meter;
---DROP TABLE if exists water_mgmt.billing;
---DROP TABLE if exists water_mgmt.user;

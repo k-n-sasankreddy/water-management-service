@@ -1,4 +1,9 @@
 package com.knsr.wmgmt.service;
 
-public class UserService {
+import com.knsr.wmgmt.dto.response.UserResponseDTO;
+
+import java.util.List;
+
+public interface UserService {
+    List<UserResponseDTO> getAllUsers();
 }

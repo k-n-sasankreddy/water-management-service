@@ -25,7 +25,7 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public DashboardSummaryResponseDTO getDashboardSummary() {
+    public DashboardSummaryResponseDTO  getDashboardSummary() {
         DashboardSummaryResponseDTO summary = new DashboardSummaryResponseDTO();
         summary.setTotalUsers(reportRepository.countTotalUsers());
         summary.setTotalZones(reportRepository.countTotalZones());
@@ -110,6 +110,17 @@ public class ReportServiceImpl implements ReportService {
     }
 
     // ✅ New Methods
+
+    @Override
+    public List<RoleMonthlyConsumptionResponseDTO> getMonthlyConsumptionByRole() {
+        return reportRepository.getRoleMonthlyConsumption().stream().map(row -> {
+            RoleMonthlyConsumptionResponseDTO dto = new RoleMonthlyConsumptionResponseDTO();
+            dto.setRole((String) row[0]);
+            dto.setMonth(formatToYearMonth(row[1]));
+            dto.setTotalConsumptionLiters((Double) row[2]);
+            return dto;
+        }).collect(Collectors.toList());
+    }
 
     @Override
     public List<RealtimeAlertResponseDTO> getRealtimeAlerts() {

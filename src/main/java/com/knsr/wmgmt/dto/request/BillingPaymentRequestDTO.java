@@ -4,22 +4,13 @@ import lombok.Data;
 
 @Data
 public class BillingPaymentRequestDTO {
-    private Long billingId;
-    private String status; // e.g., "PAID"
+    private Long userId;
 
-    public String getStatus() {
-        return status;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Long getBillingId() {
-        return billingId;
-    }
-
-    public void setBillingId(Long billingId) {
-        this.billingId = billingId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

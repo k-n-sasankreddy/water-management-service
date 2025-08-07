@@ -17,5 +17,6 @@ public interface ReportService {
     List<RealtimeAlertResponseDTO> getRealtimeAlerts();
     List<UserTypeConsumptionResponseDTO> getConsumptionByUserType();
     List<HighUsageZoneResponseDTO> getHighUsageZones();
+    List<RoleMonthlyConsumptionResponseDTO> getMonthlyConsumptionByRole();
 }
 
